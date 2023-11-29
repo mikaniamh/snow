@@ -14,6 +14,7 @@ function input(e) {
 
 }
 
+// Play again button, restarts game
 function refresh() {
     location.reload();
 }
@@ -29,19 +30,4 @@ $(document).ready(function() {
         $('input[type="submit"]').css("cursor", "default");
   
       });
-
-     // Triggers when submit is clicked
-    $('input[name="submit"]').click(function() {
-        var guess = $('input[type="guess"]').val();
-
-        $('input[type="submit"]').prop('disabled', false).val('Submit');
-  
-        $('input[type="submit"]').css("background-color", "#de6a4d");
-        $('input[type="submit"]').css("cursor", "default");
-  
-      });
-
-    $('input[type="button"]').click(function() {
-       
-    });
 });
