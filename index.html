@@ -25,57 +25,60 @@
             <p>JavaScript is required to best veiw this page. Go to your browser settings to enable! <a href="https://www.enable-javascript.com/">Help</a></p>
         </noscript>
         
+        <div id="hangman-image-viewer">
         <img id="hangman-image" src="images/hangman_all.png" alt="hangman">
-
-        <!-- <form class="input-form">
-            <label for="guess">Guess a Letter:</label>
-            <input type="text" id="guess" name="guess">
-            <input type="submit" value="Submit" disabled>
-        </form> -->
-
-        <input id="tbInput" type="text" />
-
-        <div id="virtualKey">
-            <input id="btn1" type="button" value="A" onclick="input(this);" />
-            <input id="btn2" type="button" value="B" onclick="input(this);" />
-            <input id="btn3" type="button" value="C" onclick="input(this);" />
-            <br />
-            <input id="btn4" type="button" value="D" onclick="input(this);" />
-            <input id="btn5" type="button" value="E" onclick="input(this);" />
-            <input id="btn6" type="button" value="F" onclick="input(this);" />
-            <br />
-            <input id="btn7" type="button" value="G" onclick="input(this);" />
-            <input id="btn8" type="button" value="H" onclick="input(this);" />
-            <input id="btn9" type="button" value="I" onclick="input(this);" />
-            <br />
-            <input id="btn10" type="button" value="J" onclick="input(this);" />
-            <input id="btn11" type="button" value="K" onclick="input(this);" />
-            <input id="btn12" type="button" value="L" onclick="input(this);" />
-            <br />
-            <input id="btn13" type="button" value="M" onclick="input(this);" />
-            <input id="btn14" type="button" value="N" onclick="input(this);" />
-            <input id="btn15" type="button" value="O" onclick="input(this);" />
-            <br />
-            <input id="btn16" type="button" value="P" onclick="input(this);" />
-            <input id="btn17" type="button" value="Q" onclick="input(this);" />
-            <input id="btn18" type="button" value="R" onclick="input(this);" />
-            <br />
-            <input id="btn19" type="button" value="S" onclick="input(this);" />
-            <input id="btn20" type="button" value="T" onclick="input(this);" />
-            <input id="btn21" type="button" value="U" onclick="input(this);" />
-            <br />
-            <input id="btn22" type="button" value="V" onclick="input(this);" />
-            <input id="btn23" type="button" value="W" onclick="input(this);" />
-            <input id="btn24" type="button" value="X" onclick="input(this);" />
-            <br />
-            <input id="btn25" type="button" value="Y" onclick="input(this);" />
-            <input id="btn26" type="button" value="Z" onclick="input(this);" />
-            <input id="btn27" type="button" value="?" onclick="input(this);" />
-            <br />
-
-            <input id="btnDel" type="button" value="Play Again" onclick="refresh();" />
         </div>
 
+        <div id="fill-in-the-blank">
+            <p id=""></p>
+        </div>
+
+        <div id="input-keybord-frame">
+
+            <label for="userInput">Guesses:</label>
+            <input id="userInput" type="text" disabled />
+
+
+            <div id="virtual-keyboard">
+                <input id="btn1" type="button" value="A" onclick="input(this);" />
+                <input id="btn2" type="button" value="B" onclick="input(this);" />
+                <input id="btn3" type="button" value="C" onclick="input(this);" />
+
+                <input id="btn4" type="button" value="D" onclick="input(this);" />
+                <input id="btn5" type="button" value="E" onclick="input(this);" />
+                <input id="btn6" type="button" value="F" onclick="input(this);" />
+
+                <input id="btn7" type="button" value="G" onclick="input(this);" />
+                <input id="btn8" type="button" value="H" onclick="input(this);" />
+                <input id="btn9" type="button" value="I" onclick="input(this);" />
+                <br />
+                <input id="btn10" type="button" value="J" onclick="input(this);" />
+                <input id="btn11" type="button" value="K" onclick="input(this);" />
+                <input id="btn12" type="button" value="L" onclick="input(this);" />
+
+                <input id="btn13" type="button" value="M" onclick="input(this);" />
+                <input id="btn14" type="button" value="N" onclick="input(this);" />
+                <input id="btn15" type="button" value="O" onclick="input(this);" />
+
+                <input id="btn16" type="button" value="P" onclick="input(this);" />
+                <input id="btn17" type="button" value="Q" onclick="input(this);" />
+                <input id="btn18" type="button" value="R" onclick="input(this);" />
+                <br />
+                <input id="btn19" type="button" value="S" onclick="input(this);" />
+                <input id="btn20" type="button" value="T" onclick="input(this);" />
+                <input id="btn21" type="button" value="U" onclick="input(this);" />
+
+                <input id="btn22" type="button" value="V" onclick="input(this);" />
+                <input id="btn23" type="button" value="W" onclick="input(this);" />
+                <input id="btn24" type="button" value="X" onclick="input(this);" />
+
+                <input id="btn25" type="button" value="Y" onclick="input(this);" />
+                <input id="btn26" type="button" value="Z" onclick="input(this);" />
+                <br />
+                <input id="btnDel" type="button" value="Play Again" onclick="refresh();" />
+                <input id="btn27" type="button" value="?" onclick="displayHint();" />
+            </div>
+        </div>
     </div>
 </body>
 <footer>

@@ -1,10 +1,16 @@
 // COMP 2132 - Final Project
 // Mika Campbell Nishmura A01328907
-// Nov 22, 2023
+// Nov 29, 2023
 
+const wordMap = new Map();
+wordMap.set('GOAT', 'farm animal');
+wordMap.set('STAMP', 'need to mail a letter');
+wordMap.set('BOOKKEEPER', 'might work at a race course');
+
+// Letter button inputs, greys out once selected
 function input(e) {
-    var tbInput = document.getElementById("tbInput");
-    tbInput.value = tbInput.value + e.value;
+    var userInput = document.getElementById("userInput");
+    userInput.value = userInput.value + e.value;
 
     var buttonId = e.id;
     
@@ -19,15 +25,19 @@ function refresh() {
     location.reload();
 }
 
+function selectWord(){
+
+}
+
 $(document).ready(function() {
 
-    // Triggers when guess is inputted
-    $('input[name="guess"]').change(function() {
+    // // Triggers when guess is inputted
+    // $('input[name="guess"]').change(function() {
 
-        $('input[type="submit"]').prop('disabled', false).val('Submit');
+    //     $('input[type="submit"]').prop('disabled', false).val('Submit');
   
-        $('input[type="submit"]').css("background-color", "#de6a4d");
-        $('input[type="submit"]').css("cursor", "default");
+    //     $('input[type="submit"]').css("background-color", "#de6a4d");
+    //     $('input[type="submit"]').css("cursor", "default");
   
-      });
+    //   });
 });
