@@ -140,8 +140,9 @@ function checkGameEnd() {
     if (incorrectGuesses.length >= 7) {
         displayWord();
         $('input[id="incorrectGuesses"]').css("color","red");
-        $('p[id="instructions"]').text("");
-
+        $('p[id="instructions"]').text("You Lost. Better luck next time...");
+        $('div[id="input-keybord-frame"]').css("pointer-events", "none");
+        
         // Displays pop-up after 3 seconds
         setTimeout(function() {
             $('#popup').css('opacity', '1');
@@ -149,11 +150,14 @@ function checkGameEnd() {
     } else if (!correctGuesses.includes('-')) {
         displayWord();
         $('p[class="wordTile"]').css("color","green");
-        $('p[id="instructions"]').text("Well Done!");
+        $('p[id="instructions"]').text("You Won! Well done!");
 
         $('p[class="wordTile"]').css("background-color","#c2efc6");
         const hangmanImage = document.getElementById('hangman-image');
         hangmanImage.src = `images/snowman-win.png`;
+
+        $('div[id="input-keybord-frame"]').css("pointer-events", "none");
+
 
         // Displays pop-up after 3 seconds
         setTimeout(function() {

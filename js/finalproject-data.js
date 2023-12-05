@@ -23,5 +23,8 @@ class WordPair {
 const word1 = new WordPair ("GOAT", "Think farm inhabitant.");
 const word2 = new WordPair ("STOMP", "Something you might do in frustration.");
 const word3 = new WordPair ("BOOKKEEPER", "You might meet them at the race course.");
+const word4 = new WordPair ("MALLARD", "The male qauckers have green heads.");
+const word5 = new WordPair ("CARROT", "Peter Rabbit's root.");
+const word6 = new WordPair ("SUBMARINE", "The Nautilus, for one.");
 
-const words = [word1, word2, word3];
+const words = [word1, word2, word3, word4, word5, word6];
