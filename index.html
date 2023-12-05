@@ -8,7 +8,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/finalproject-data.js" defer></script>
     <script src="js/finalproject-functions.js" defer></script>
-    <script src="js/finalproject-main.js" defer></script>
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,49 +36,50 @@
 
         <div id="input-keybord-frame">
 
-            <label for="userInput">Guesses:</label>
-            <input id="userInput" type="text" disabled />
+            <label for="incorrectGuesses">Incorrect guesses:</label>
+            <input id="incorrectGuesses" type="text" disabled />
 
 
             <div id="virtual-keyboard">
-                <input id="btn1" type="button" value="A" onclick="input(this);" />
-                <input id="btn2" type="button" value="B" onclick="input(this);" />
-                <input id="btn3" type="button" value="C" onclick="input(this);" />
+                <input id="A" type="button" value="A" onclick="input(value);" />
+                <input id="B" type="button" value="B" onclick="input(value);" />
+                <input id="C" type="button" value="C" onclick="input(value);" />
 
-                <input id="btn4" type="button" value="D" onclick="input(this);" />
-                <input id="btn5" type="button" value="E" onclick="input(this);" />
-                <input id="btn6" type="button" value="F" onclick="input(this);" />
+                <input id="D" type="button" value="D" onclick="input(value);" />
+                <input id="E" type="button" value="E" onclick="input(value);" />
+                <input id="F" type="button" value="F" onclick="input(value);" />
 
-                <input id="btn7" type="button" value="G" onclick="input(this);" />
-                <input id="btn8" type="button" value="H" onclick="input(this);" />
-                <input id="btn9" type="button" value="I" onclick="input(this);" />
+                <input id="G" type="button" value="G" onclick="input(value);" />
+                <input id="H" type="button" value="H" onclick="input(value);" />
+                <input id="I" type="button" value="I" onclick="input(value);" />
                 <br />
-                <input id="btn10" type="button" value="J" onclick="input(this);" />
-                <input id="btn11" type="button" value="K" onclick="input(this);" />
-                <input id="btn12" type="button" value="L" onclick="input(this);" />
+                <input id="J" type="button" value="J" onclick="input(value);" />
+                <input id="K" type="button" value="K" onclick="input(value);" />
+                <input id="L" type="button" value="L" onclick="input(value);" />
 
-                <input id="btn13" type="button" value="M" onclick="input(this);" />
-                <input id="btn14" type="button" value="N" onclick="input(this);" />
-                <input id="btn15" type="button" value="O" onclick="input(this);" />
+                <input id="M" type="button" value="M" onclick="input(value);" />
+                <input id="N" type="button" value="N" onclick="input(value);" />
+                <input id="O" type="button" value="O" onclick="input(value);" />
 
-                <input id="btn16" type="button" value="P" onclick="input(this);" />
-                <input id="btn17" type="button" value="Q" onclick="input(this);" />
-                <input id="btn18" type="button" value="R" onclick="input(this);" />
+                <input id="P" type="button" value="P" onclick="input(value);" />
+                <input id="Q" type="button" value="Q" onclick="input(value);" />
+                <input id="R" type="button" value="R" onclick="input(value);" />
                 <br />
-                <input id="btn19" type="button" value="S" onclick="input(this);" />
-                <input id="btn20" type="button" value="T" onclick="input(this);" />
-                <input id="btn21" type="button" value="U" onclick="input(this);" />
+                <input id="S" type="button" value="S" onclick="input(value);" />
+                <input id="T" type="button" value="T" onclick="input(value);" />
+                <input id="U" type="button" value="U" onclick="input(value);" />
 
-                <input id="btn22" type="button" value="V" onclick="input(this);" />
-                <input id="btn23" type="button" value="W" onclick="input(this);" />
-                <input id="btn24" type="button" value="X" onclick="input(this);" />
+                <input id="V" type="button" value="V" onclick="input(value);" />
+                <input id="W" type="button" value="W" onclick="input(value);" />
+                <input id="X" type="button" value="X" onclick="input(value);" />
 
-                <input id="btn25" type="button" value="Y" onclick="input(this);" />
-                <input id="btn26" type="button" value="Z" onclick="input(this);" />
+                <input id="Y" type="button" value="Y" onclick="input(value);" />
+                <input id="Z" type="button" value="Z" onclick="input(value);" />
                 <br />
-                <input id="btnDel" type="button" value="Play Again" onclick="refresh();" />
-                <input id="btn27" type="button" value="?" onclick="displayHint();" />
+                <input id="btnDel" type="button" value="Play Again" onclick="resetGame();" />
+                <input id="btnHint" type="button" value="?" />
             </div>
+            <p id="hint">Select '?' to display hint.</p>
         </div>
     </div>
 </body>

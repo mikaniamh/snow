@@ -5,6 +5,16 @@ $ThemeColorExtraDark: #b55036;
 $ThemeColorDark: #f68366;
 $ThemeColorLight: #FFDED6;
 
+@mixin centered {
+    display: flex;
+    margin: auto;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
@@ -44,14 +54,8 @@ section{
 }
 
 #input-keybord-frame{
-    display: flex;
+    @include centered();
     width: 300px;
-    margin: auto;
-
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
-    justify-content: center;
 
 }
 
@@ -79,6 +83,10 @@ input {
     gap: 2px 2px;
 
 }
+#fill-in-the-blank{
+    @include centered();
+    width: 300px;
+}
 
 #word-blank {
     display: flex;
@@ -97,6 +105,8 @@ h1, h2, h3, h4, h5, h6{
 }
 
 h1 {
+    @include centered();
+
     color: $ThemeColorDark;
     font-size: 300%;
     font-family: $FontFamily;

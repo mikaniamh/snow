@@ -36,12 +36,12 @@ section {
 
 #input-keybord-frame {
   display: flex;
-  width: 300px;
   margin: auto;
   flex-direction: row;
   flex-wrap: wrap;
   margin: auto;
   justify-content: center;
+  width: 300px;
 }
 
 label {
@@ -67,6 +67,16 @@ input {
   gap: 2px 2px;
 }
 
+#fill-in-the-blank {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  width: 300px;
+}
+
 #word-blank {
   display: flex;
 }
@@ -86,6 +96,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
   color: #f68366;
   font-size: 300%;
   font-family: "Martian Mono";

@@ -2,38 +2,22 @@
 // Mika Campbell Nishmura A01328907
 // Nov 29, 2023
 
-
-// Collects user guesses, greys out once selected
-function input(e) {
-    var userInput = document.getElementById("userInput");
-    userInput.value = userInput.value + e.value;
-
-    checkGuess(e, targetWord)
-    
-    var buttonId = e.id;
-    $('input[id=' + buttonId + ']').prop('disabled', true);
-    $('input[id=' + buttonId + ']').css("background-color","grey");
-    $('input[id=' + buttonId + ']').css("cursor", "not-allowed");
-
-}
-
-// Checks if letter guessed is in target word
-function checkGuess(letterGuessed, targetWord) {
-    const letters = targetWord.split('');
-    console.log(letters); 
-}
+const targetWord = getRandomPair().getWord;
+const hint = getRandomPair().getHint;
+let wordLength = targetWord.length;
+let hintVisable = false;
+let correctGuesses = Array.from('-'.repeat(wordLength));
+let incorrectGuesses = [];
 
 // Play again button, restarts game
-function refresh() {
+function resetGame() {
     location.reload();
 }
 
-// returns random key from Map
-function getRandomKey() {
-    let keys = Array.from(wordMap.keys());
-    return keys[Math.floor(Math.random() * keys.length)];
+// returns random word from WordMap
+function getRandomPair() {
+    return words[Math.floor(Math.random() * words.length)];
 }
-
 
 const blankStyle = `"
     color:black;
@@ -47,15 +31,107 @@ const blankStyle = `"
     "`;
 
 // displays the correct number of empty spaces in HTML for the selected word
-function displayWordBlanks(word){
-    let wordLength = word.length;
-
+function displayWord(){
     const wordBlankElem = document.getElementById('word-blank');
     let wordBlankHTMLOut = ``;
 
     for (i=0;i<wordLength;i++){
-        wordBlankHTMLOut +=`<p style=${blankStyle}>-</p>`;
-
+        wordBlankHTMLOut +=`<p id="${i}" class="wordTile" style=${blankStyle}>${correctGuesses[i]}</p>`;
     }
     wordBlankElem.innerHTML=wordBlankHTMLOut;
+}
+
+// displays the corresponding hint
+function displayHint(){
+    $('#hint').val('value', hint);
+}
+
+$(document).ready(function() {
+    console.log(targetWord);
+    console.log(correctGuesses);
+
+    // Set up word
+    displayWord(targetWord);
+
+    // Displays/Hides Hint
+    $('#btnHint').click(function() {
+        if(hintVisable) {
+            $('#hint').text("Select '?' to display hint.");
+            hintVisable = false;
+        } else {
+            $('#hint').text(hint);
+            hintVisable = true;
+        }
+    });
+});
+
+// Collects user guesses, greys out once selected
+function input(letterGuessed) {
+
+    checkGuess(letterGuessed);
+
+    var buttonId = letterGuessed;
+    $('input[id=' + buttonId + ']').prop('disabled', true);
+    $('input[id=' + buttonId + ']').css("background-color","grey");
+    $('input[id=' + buttonId + ']').css("cursor", "not-allowed");
+
+}
+
+
+function checkGuess(letterGuessed) {
+    const letters = targetWord.split('');
+    console.log(letters); 
+    let letterExists = true;
+    letterExisted = false;
+
+    while(letterExists){
+
+        if(letters.includes(letterGuessed)){
+            // Checks if letter guessed is in target word
+            letterIndex = letters.indexOf(letterGuessed);
+            correctGuesses[letterIndex] = letterGuessed;
+            letters[letterIndex] = 0;
+            displayWord();
+            letterExisted = true;
+
+        } else {
+        // add letter to incorrect guesses
+            if(!letterExisted){
+                var incorrectGuessesElem = document.getElementById("incorrectGuesses");
+                incorrectGuessesElem.value = incorrectGuessesElem.value + letterGuessed;
+    
+                incorrectGuesses.push(letterGuessed); 
+            }
+            letterExists = false;
+         }
+    
+        console.log("correct: " + correctGuesses);
+        console.log("incorrect: " + incorrectGuesses);
+    };
+        displayWord();
+        checkGameEnd();
+        console.log(correctGuesses);
+        //update word blanks
+} 
+
+function checkGameEnd() {
+    if (incorrectGuesses.length >= 6) {
+        displayWord();
+        $('input[id="incorrectGuesses"]').css("color","red");
+
+        setTimeout(function() {
+            alert('Game over!');
+            resetGame();
+          }, 500);
+    } else if (!correctGuesses.includes('-')) {
+        displayWord();
+        $('p[class="wordTile"]').css("color","green");
+        $('p[class="wordTile"]').css("background-color","#c2efc6");
+
+        setTimeout(function() {
+            alert('Congratulations! You won!');
+            resetGame();
+          }, 500);
+
+    }
 }
