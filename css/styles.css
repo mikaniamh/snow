@@ -67,6 +67,10 @@ input {
   gap: 2px 2px;
 }
 
+#word-blank {
+  display: flex;
+}
+
 main {
   padding: 10px;
   flex: 1;
