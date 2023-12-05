@@ -18,7 +18,7 @@
     <div id="wrapper">
         <header>
             <div class="span-header"></div>
-            <h1>Hangman Game</h1>
+            <h1>Save The Snowman!</h1>
         </header>
     <div class="container">
 
@@ -27,59 +27,71 @@
         </noscript>
         
         <div id="hangman-image-viewer">
-        <img id="hangman-image" src="images/hangman_all.png" alt="hangman">
+        <img id="hangman-image" src="images/snowman-start.png" alt="snowman-start">
         </div>
 
-        <div id="fill-in-the-blank">
-            <p id="word-blank"></p>
-        </div>
-
-        <div id="input-keybord-frame">
-
-            <label for="incorrectGuesses">Incorrect guesses:</label>
-            <input id="incorrectGuesses" type="text" disabled />
-
-
-            <div id="virtual-keyboard">
-                <input id="A" type="button" value="A" onclick="input(value);" />
-                <input id="B" type="button" value="B" onclick="input(value);" />
-                <input id="C" type="button" value="C" onclick="input(value);" />
-
-                <input id="D" type="button" value="D" onclick="input(value);" />
-                <input id="E" type="button" value="E" onclick="input(value);" />
-                <input id="F" type="button" value="F" onclick="input(value);" />
-
-                <input id="G" type="button" value="G" onclick="input(value);" />
-                <input id="H" type="button" value="H" onclick="input(value);" />
-                <input id="I" type="button" value="I" onclick="input(value);" />
-                <br />
-                <input id="J" type="button" value="J" onclick="input(value);" />
-                <input id="K" type="button" value="K" onclick="input(value);" />
-                <input id="L" type="button" value="L" onclick="input(value);" />
-
-                <input id="M" type="button" value="M" onclick="input(value);" />
-                <input id="N" type="button" value="N" onclick="input(value);" />
-                <input id="O" type="button" value="O" onclick="input(value);" />
-
-                <input id="P" type="button" value="P" onclick="input(value);" />
-                <input id="Q" type="button" value="Q" onclick="input(value);" />
-                <input id="R" type="button" value="R" onclick="input(value);" />
-                <br />
-                <input id="S" type="button" value="S" onclick="input(value);" />
-                <input id="T" type="button" value="T" onclick="input(value);" />
-                <input id="U" type="button" value="U" onclick="input(value);" />
-
-                <input id="V" type="button" value="V" onclick="input(value);" />
-                <input id="W" type="button" value="W" onclick="input(value);" />
-                <input id="X" type="button" value="X" onclick="input(value);" />
-
-                <input id="Y" type="button" value="Y" onclick="input(value);" />
-                <input id="Z" type="button" value="Z" onclick="input(value);" />
-                <br />
-                <input id="btnDel" type="button" value="Play Again" onclick="resetGame();" />
-                <input id="btnHint" type="button" value="?" />
+        <div>
+            <br>
+            <div id="fill-in-the-blank">
+                <p id="instructions">Guess the word...</p>
+                <p id="word-blank"></p>
             </div>
-            <p id="hint">Select '?' to display hint.</p>
+
+            <div id="input-keybord-frame">
+
+                <label for="incorrectGuesses">Incorrect guesses:</label>
+                <input id="incorrectGuesses" type="text" disabled />
+
+
+                <div id="virtual-keyboard">
+                    <input id="A" type="button" value="A" onclick="input(value);" />
+                    <input id="B" type="button" value="B" onclick="input(value);" />
+                    <input id="C" type="button" value="C" onclick="input(value);" />
+
+                    <input id="D" type="button" value="D" onclick="input(value);" />
+                    <input id="E" type="button" value="E" onclick="input(value);" />
+                    <input id="F" type="button" value="F" onclick="input(value);" />
+
+                    <input id="G" type="button" value="G" onclick="input(value);" />
+                    <input id="H" type="button" value="H" onclick="input(value);" />
+                    <input id="I" type="button" value="I" onclick="input(value);" />
+                    <br />
+                    <input id="J" type="button" value="J" onclick="input(value);" />
+                    <input id="K" type="button" value="K" onclick="input(value);" />
+                    <input id="L" type="button" value="L" onclick="input(value);" />
+
+                    <input id="M" type="button" value="M" onclick="input(value);" />
+                    <input id="N" type="button" value="N" onclick="input(value);" />
+                    <input id="O" type="button" value="O" onclick="input(value);" />
+
+                    <input id="P" type="button" value="P" onclick="input(value);" />
+                    <input id="Q" type="button" value="Q" onclick="input(value);" />
+                    <input id="R" type="button" value="R" onclick="input(value);" />
+                    <br />
+                    <input id="S" type="button" value="S" onclick="input(value);" />
+                    <input id="T" type="button" value="T" onclick="input(value);" />
+                    <input id="U" type="button" value="U" onclick="input(value);" />
+
+                    <input id="V" type="button" value="V" onclick="input(value);" />
+                    <input id="W" type="button" value="W" onclick="input(value);" />
+                    <input id="X" type="button" value="X" onclick="input(value);" />
+
+                    <input id="Y" type="button" value="Y" onclick="input(value);" />
+                    <input id="Z" type="button" value="Z" onclick="input(value);" />
+                    <br />
+                    <input id="btnDel" type="button" value="Play Again" onclick="resetGame();" />
+                    <input id="btnHint" type="button" value="?" />
+                </div>
+                <p id="hint">Select '?' to display hint.</p>
+            </div>
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <p id="popup-text">Would you like to play again?</p>
+        
+        <div>
+            <button id="playAgainYes">Yes</button>
+            <button id="playAgainNo">No</button>
         </div>
     </div>
 </body>

@@ -2,8 +2,9 @@
 // Mika Campbell Nishmura A01328907
 // Nov 29, 2023
 
-const targetWord = getRandomPair().getWord;
-const hint = getRandomPair().getHint;
+const pair = getRandomPair()
+const targetWord = pair.getWord();
+const hint = pair.getHint();
 let wordLength = targetWord.length;
 let hintVisable = false;
 let correctGuesses = Array.from('-'.repeat(wordLength));
@@ -22,7 +23,7 @@ function getRandomPair() {
 const blankStyle = `"
     color:black;
     background:white;       
-    border:pink;
+    border: #7E9BE6;
     border-style: outset;
     border-width: 1px;
     border-radius: 5px;
@@ -43,6 +44,7 @@ function displayWord(){
 
 // displays the corresponding hint
 function displayHint(){
+
     $('#hint').val('value', hint);
 }
 
@@ -50,8 +52,13 @@ $(document).ready(function() {
     console.log(targetWord);
     console.log(correctGuesses);
 
-    // Set up word
+    // Set up 
     displayWord(targetWord);
+
+    setTimeout(function() {
+        const hangmanImage = document.getElementById('hangman-image');
+        hangmanImage.src = `images/snowman-1.png`;
+    }, 2000);
 
     // Displays/Hides Hint
     $('#btnHint').click(function() {
@@ -62,6 +69,16 @@ $(document).ready(function() {
             $('#hint').text(hint);
             hintVisable = true;
         }
+    });
+
+    // Closes pop-up with 1s fade out (see CSS for time)
+    $('#playAgainYes').click(function() {
+        $('#popup').css('opacity', '0');
+        resetGame();
+    });
+
+    $('#playAgainNo').click(function() {
+        $('#popup').css('opacity', '0');
     });
 });
 
@@ -76,7 +93,6 @@ function input(letterGuessed) {
     $('input[id=' + buttonId + ']').css("cursor", "not-allowed");
 
 }
-
 
 function checkGuess(letterGuessed) {
     const letters = targetWord.split('');
@@ -100,7 +116,8 @@ function checkGuess(letterGuessed) {
                 var incorrectGuessesElem = document.getElementById("incorrectGuesses");
                 incorrectGuessesElem.value = incorrectGuessesElem.value + letterGuessed;
     
-                incorrectGuesses.push(letterGuessed); 
+                incorrectGuesses.push(letterGuessed);
+                updateHangmanImage(incorrectGuesses.length); 
             }
             letterExists = false;
          }
@@ -114,24 +131,33 @@ function checkGuess(letterGuessed) {
         //update word blanks
 } 
 
+function updateHangmanImage(guessCount) {
+    const hangmanImage = document.getElementById('hangman-image');
+    hangmanImage.src = `images/snowman-${guessCount + 1}.png`;
+}
+
 function checkGameEnd() {
-    if (incorrectGuesses.length >= 6) {
+    if (incorrectGuesses.length >= 7) {
         displayWord();
         $('input[id="incorrectGuesses"]').css("color","red");
+        $('p[id="instructions"]').text("");
 
+        // Displays pop-up after 3 seconds
         setTimeout(function() {
-            alert('Game over!');
-            resetGame();
-          }, 500);
+            $('#popup').css('opacity', '1');
+        }, 3000);
     } else if (!correctGuesses.includes('-')) {
         displayWord();
         $('p[class="wordTile"]').css("color","green");
+        $('p[id="instructions"]').text("Well Done!");
+
         $('p[class="wordTile"]').css("background-color","#c2efc6");
+        const hangmanImage = document.getElementById('hangman-image');
+        hangmanImage.src = `images/snowman-win.png`;
 
+        // Displays pop-up after 3 seconds
         setTimeout(function() {
-            alert('Congratulations! You won!');
-            resetGame();
-          }, 500);
-
+            $('#popup').css('opacity', '1');
+        }, 3000);
     }
 }

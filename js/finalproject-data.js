@@ -20,10 +20,8 @@ class WordPair {
     }
 
 
-const word1 = new WordPair ("GOAT", "Farm inhabitant");
-const word2 = new WordPair ("STOMP", "In frustration");
-const word3 = new WordPair ("BOOKKEEPER", "You might meet them at a race course");
+const word1 = new WordPair ("GOAT", "Think farm inhabitant.");
+const word2 = new WordPair ("STOMP", "Something you might do in frustration.");
+const word3 = new WordPair ("BOOKKEEPER", "You might meet them at the race course.");
 
 const words = [word1, word2, word3];
-
-

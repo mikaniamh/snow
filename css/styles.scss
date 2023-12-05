@@ -1,9 +1,9 @@
 
 @charset "utf-8";
 $FontFamily: "Martian Mono";
-$ThemeColorExtraDark: #b55036;
-$ThemeColorDark: #f68366;
-$ThemeColorLight: #FFDED6;
+$ThemeColorExtraDark: #3d6ade;
+$ThemeColorDark: #7E9BE6;
+$ThemeColorLight: #D5E1FF;
 
 @mixin centered {
     display: flex;
@@ -20,6 +20,7 @@ body{
     background-color: white;
     color: black;
     margin: 0%;
+    cursor: pointer;
 }
 
 header{
@@ -47,20 +48,20 @@ section{
     margin: auto;
     display: flex;
     padding: 10px;
-    flex-direction: column;
 
     justify-items: center;
-
 }
 
 #input-keybord-frame{
     @include centered();
     width: 300px;
+    padding: 10px;
 
 }
 
 label{
     font-family: $FontFamily;
+    font-size: small;
 }
 
 input {
@@ -82,24 +83,59 @@ input {
     align-content: stretch;
     gap: 2px 2px;
 
+    padding: 10px;
+
 }
 #fill-in-the-blank{
     @include centered();
-    width: 300px;
+    width: 180px;
 }
 
 #word-blank {
     display: flex;
 }
 
+#hint{
+    @include centered();
+    padding: 20px;
+    text-align: center;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+
+    border-radius: 20px;
+
+    background:$ThemeColorLight;
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s;
+    
+    padding: 10px;
+    text-align: center;
+}
+
+#closePopup{
+    width: 50px;
+
+}
+
 main {
     padding: 10px;
     flex: 1;
 }
+
 img {
-    max-width: 100%;
-    height: auto;
+    max-height: 600px;
 }
+
 h1, h2, h3, h4, h5, h6{
     margin:0px;    
 }
@@ -129,6 +165,7 @@ p{
     padding-left: 5px;
     font-size: small;
     font-family: $FontFamily;
+    color: $ThemeColorDark;
 }
 
 /* Responsive Design */

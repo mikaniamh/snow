@@ -3,15 +3,16 @@ body {
   background-color: white;
   color: black;
   margin: 0%;
+  cursor: pointer;
 }
 
 header {
-  background-color: #FFDED6;
+  background-color: #D5E1FF;
   padding: 10px;
 }
 
 footer {
-  background-image: linear-gradient(45deg, #f68366 0%, #FFDED6 100%);
+  background-image: linear-gradient(45deg, #7E9BE6 0%, #D5E1FF 100%);
   display: flex;
   justify-content: space-around;
 }
@@ -30,7 +31,6 @@ section {
   margin: auto;
   display: flex;
   padding: 10px;
-  flex-direction: column;
   justify-items: center;
 }
 
@@ -42,10 +42,12 @@ section {
   margin: auto;
   justify-content: center;
   width: 300px;
+  padding: 10px;
 }
 
 label {
   font-family: "Martian Mono";
+  font-size: small;
 }
 
 input {
@@ -65,6 +67,7 @@ input {
   justify-content: center;
   align-content: stretch;
   gap: 2px 2px;
+  padding: 10px;
 }
 
 #fill-in-the-blank {
@@ -74,11 +77,44 @@ input {
   flex-wrap: wrap;
   margin: auto;
   justify-content: center;
-  width: 300px;
+  width: 180px;
 }
 
 #word-blank {
   display: flex;
+}
+
+#hint {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #D5E1FF;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 1s;
+  padding: 10px;
+  text-align: center;
+}
+
+#closePopup {
+  width: 50px;
 }
 
 main {
@@ -87,8 +123,7 @@ main {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  max-height: 600px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -102,13 +137,13 @@ h1 {
   flex-wrap: wrap;
   margin: auto;
   justify-content: center;
-  color: #f68366;
+  color: #7E9BE6;
   font-size: 300%;
   font-family: "Martian Mono";
 }
 
 h2 {
-  color: #b55036;
+  color: #3d6ade;
   padding: 5px;
   font-size: large;
   font-family: "Martian Mono";
@@ -124,6 +159,7 @@ p {
   padding-left: 5px;
   font-size: small;
   font-family: "Martian Mono";
+  color: #7E9BE6;
 }
 
 /* Responsive Design */
@@ -155,5 +191,5 @@ p {
   left: 0;
   width: 100vw;
   height: 15px;
-  background-color: #FFDED6;
+  background-color: #D5E1FF;
 }
