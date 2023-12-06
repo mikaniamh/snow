@@ -20,24 +20,13 @@ function getRandomPair() {
     return words[Math.floor(Math.random() * words.length)];
 }
 
-const blankStyle = `"
-    color:black;
-    background:white;       
-    border: #7E9BE6;
-    border-style: outset;
-    border-width: 1px;
-    border-radius: 5px;
-    width: 15px;
-    height: 15px;
-    "`;
-
 // displays the correct number of empty spaces in HTML for the selected word
 function displayWord(){
     const wordBlankElem = document.getElementById('word-blank');
     let wordBlankHTMLOut = ``;
 
     for (i=0;i<wordLength;i++){
-        wordBlankHTMLOut +=`<p id="${i}" class="wordTile" style=${blankStyle}>${correctGuesses[i]}</p>`;
+        wordBlankHTMLOut +=`<p id="${i}" class="wordTile">${correctGuesses[i]}</p>`;
     }
     wordBlankElem.innerHTML=wordBlankHTMLOut;
 }
@@ -82,7 +71,7 @@ $(document).ready(function() {
     });
 });
 
-// Collects user guesses, greys out once selected
+// Collects user input, greys buttons out once selected
 function input(letterGuessed) {
 
     checkGuess(letterGuessed);
@@ -94,6 +83,7 @@ function input(letterGuessed) {
 
 }
 
+// Checks if letter is correct, adds letter to appropriate array
 function checkGuess(letterGuessed) {
     const letters = targetWord.split('');
     console.log(letters); 
@@ -111,7 +101,7 @@ function checkGuess(letterGuessed) {
             letterExisted = true;
 
         } else {
-        // add letter to incorrect guesses
+            // else add letter to incorrect guesses
             if(!letterExisted){
                 var incorrectGuessesElem = document.getElementById("incorrectGuesses");
                 incorrectGuessesElem.value = incorrectGuessesElem.value + letterGuessed;
@@ -121,21 +111,26 @@ function checkGuess(letterGuessed) {
             }
             letterExists = false;
          }
-    
-        console.log("correct: " + correctGuesses);
-        console.log("incorrect: " + incorrectGuesses);
     };
-        displayWord();
-        checkGameEnd();
-        console.log(correctGuesses);
-        //update word blanks
+    // update word blanks and check if max guesses have been reached
+    displayWord();
+    checkGameEnd();
 } 
 
+// Updates snowman animation frame
 function updateHangmanImage(guessCount) {
     const hangmanImage = document.getElementById('hangman-image');
     hangmanImage.src = `images/snowman-${guessCount + 1}.png`;
 }
 
+        // Displays Play again pop-up after 3 seconds
+function displayPlayAgainPopup(){
+    setTimeout(function() {
+        $('#popup').css('opacity', '1');
+    }, 3000);
+}
+
+// Checks if game should end, max 7 guesses
 function checkGameEnd() {
     if (incorrectGuesses.length >= 7) {
         displayWord();
@@ -143,25 +138,18 @@ function checkGameEnd() {
         $('p[id="instructions"]').text("You Lost. Better luck next time...");
         $('div[id="input-keybord-frame"]').css("pointer-events", "none");
         
-        // Displays pop-up after 3 seconds
-        setTimeout(function() {
-            $('#popup').css('opacity', '1');
-        }, 3000);
+        displayPlayAgainPopup();
     } else if (!correctGuesses.includes('-')) {
         displayWord();
-        $('p[class="wordTile"]').css("color","green");
         $('p[id="instructions"]').text("You Won! Well done!");
-
+        $('p[class="wordTile"]').css("color","green");
         $('p[class="wordTile"]').css("background-color","#c2efc6");
+
         const hangmanImage = document.getElementById('hangman-image');
         hangmanImage.src = `images/snowman-win.png`;
 
         $('div[id="input-keybord-frame"]').css("pointer-events", "none");
 
-
-        // Displays pop-up after 3 seconds
-        setTimeout(function() {
-            $('#popup').css('opacity', '1');
-        }, 3000);
+        displayPlayAgainPopup();
     }
 }

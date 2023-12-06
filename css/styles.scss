@@ -95,6 +95,17 @@ input {
     display: flex;
 }
 
+.wordTile{
+    color:black;
+    background:white;       
+    border: $ThemeColorDark;
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+}
+
 #hint{
     @include centered();
     padding: 20px;
