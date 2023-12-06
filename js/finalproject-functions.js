@@ -9,6 +9,7 @@ let wordLength = targetWord.length;
 let hintVisable = false;
 let correctGuesses = Array.from('-'.repeat(wordLength));
 let incorrectGuesses = [];
+let playStarted = false;
 
 // Play again button, restarts game
 function resetGame() {
@@ -17,7 +18,7 @@ function resetGame() {
 
 // returns random word from WordMap
 function getRandomPair() {
-    return words[Math.floor(Math.random() * words.length)];
+    return wordPairs[Math.floor(Math.random() * wordPairs.length)];
 }
 
 // displays the correct number of empty spaces in HTML for the selected word
@@ -29,6 +30,28 @@ function displayWord(){
         wordBlankHTMLOut +=`<p id="${i}" class="wordTile">${correctGuesses[i]}</p>`;
     }
     wordBlankElem.innerHTML=wordBlankHTMLOut;
+}
+
+function displayKeyboard(){
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const keysElem = document.getElementById('virtual-keyboard');
+    let keysHTMLOut = ``;
+    let rowCount = 1;
+
+    for (i=0; i<alphabet.length;i++){
+        let keyValue = alphabet[i].toUpperCase();
+        keysHTMLOut += `<input id="${keyValue}" class="key" type="button" value="${keyValue}" onclick="input(value);" />`
+
+        if(rowCount==9){
+            keysHTMLOut += `<br>`;
+            rowCount=0;
+        }
+        rowCount++;
+    }
+    keysHTMLOut += `<input id="btnRestart" type="button" value="Restart" onclick="resetGame();" />`;
+    keysHTMLOut += `<input id="btnHint" type="button" value="?"/>`;
+
+    keysElem.innerHTML=keysHTMLOut;
 }
 
 // displays the corresponding hint
@@ -43,10 +66,15 @@ $(document).ready(function() {
 
     // Set up 
     displayWord(targetWord);
+    displayKeyboard();
+
+    // Changes image to create suspense after 2 seconds
 
     setTimeout(function() {
-        const hangmanImage = document.getElementById('hangman-image');
-        hangmanImage.src = `images/snowman-1.png`;
+        if (!playStarted){
+            const hangmanImage = document.getElementById('hangman-image');
+            hangmanImage.src = `images/snowman-1.png`;
+        }
     }, 2000);
 
     // Displays/Hides Hint
@@ -73,17 +101,18 @@ $(document).ready(function() {
 
 // Collects user input, greys buttons out once selected
 function input(letterGuessed) {
+    playStarted = true;
 
     checkGuess(letterGuessed);
 
     var buttonId = letterGuessed;
     $('input[id=' + buttonId + ']').prop('disabled', true);
-    $('input[id=' + buttonId + ']').css("background-color","grey");
+    $('input[id=' + buttonId + ']').css("background-color","#15295e");
     $('input[id=' + buttonId + ']').css("cursor", "not-allowed");
 
 }
 
-// Checks if letter is correct, adds letter to appropriate array
+// Checks if letter is correct, adds letter to correct/incorrect array
 function checkGuess(letterGuessed) {
     const letters = targetWord.split('');
     console.log(letters); 
@@ -123,22 +152,23 @@ function updateHangmanImage(guessCount) {
     hangmanImage.src = `images/snowman-${guessCount + 1}.png`;
 }
 
-        // Displays Play again pop-up after 3 seconds
+// Displays Play Again pop-up after 3 seconds
 function displayPlayAgainPopup(){
     setTimeout(function() {
         $('#popup').css('opacity', '1');
     }, 3000);
 }
 
-// Checks if game should end, max 7 guesses
+// Checks if game should end, max 7 guesses, handles end game if win or loss
 function checkGameEnd() {
     if (incorrectGuesses.length >= 7) {
         displayWord();
         $('input[id="incorrectGuesses"]').css("color","red");
         $('p[id="instructions"]').text("You Lost. Better luck next time...");
-        $('div[id="input-keybord-frame"]').css("pointer-events", "none");
+        $('input[class="key"]').css("pointer-events", "none");
         
         displayPlayAgainPopup();
+        $('#btnPlayAgain').css('opacity', 1);
     } else if (!correctGuesses.includes('-')) {
         displayWord();
         $('p[id="instructions"]').text("You Won! Well done!");
@@ -148,8 +178,10 @@ function checkGameEnd() {
         const hangmanImage = document.getElementById('hangman-image');
         hangmanImage.src = `images/snowman-win.png`;
 
-        $('div[id="input-keybord-frame"]').css("pointer-events", "none");
+        $('input[class="key"]').css("pointer-events", "none");
 
         displayPlayAgainPopup();
+
+        $('#btnPlayAgain').css('opacity', 1);
     }
 }

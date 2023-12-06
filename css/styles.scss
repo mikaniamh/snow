@@ -4,6 +4,7 @@ $FontFamily: "Martian Mono";
 $ThemeColorExtraDark: #3d6ade;
 $ThemeColorDark: #7E9BE6;
 $ThemeColorLight: #D5E1FF;
+$ForbiddenColor: #15295e;
 
 @mixin centered {
     display: flex;
@@ -66,13 +67,34 @@ label{
 
 input {
     font-family: $FontFamily;
+
+    color: $ThemeColorExtraDark;
+    background-color: $ThemeColorLight;
+    border: $ThemeColorDark;
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 5px;
 }
+
+button {
+    font-family: $FontFamily;
+
+    color: $ThemeColorExtraDark;
+    background-color: white;
+    border: $ThemeColorDark;
+    border-style: outset;
+    border-width: 1px;
+    border-radius: 5px;
+}
+button:hover {
+    color: $ThemeColorLight;
+    background-color: $ThemeColorExtraDark;
+  }
 
 #userInput{
     max-height: 20px;
     justify-content: left top;
 }
-
 #virtual-keyboard{
     width: 200px;
     display: flex;
@@ -112,6 +134,11 @@ input {
     text-align: center;
 }
 
+#btnPlayAgain {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
 .popup {
     display: flex;
     flex-direction: column;
@@ -119,7 +146,6 @@ input {
     align-items: center;
 
     border-radius: 20px;
-
     background:$ThemeColorLight;
     color: white;
     position: fixed;
@@ -131,6 +157,10 @@ input {
     
     padding: 10px;
     text-align: center;
+}
+
+#popup-text{
+    color: $ThemeColorExtraDark;
 }
 
 #closePopup{

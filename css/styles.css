@@ -52,6 +52,27 @@ label {
 
 input {
   font-family: "Martian Mono";
+  color: #3d6ade;
+  background-color: #D5E1FF;
+  border: #7E9BE6;
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+button {
+  font-family: "Martian Mono";
+  color: #3d6ade;
+  background-color: white;
+  border: #7E9BE6;
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+button:hover {
+  color: #D5E1FF;
+  background-color: #3d6ade;
 }
 
 #userInput {
@@ -84,6 +105,17 @@ input {
   display: flex;
 }
 
+.wordTile {
+  color: black;
+  background: white;
+  border: #7E9BE6;
+  border-style: outset;
+  border-width: 1px;
+  border-radius: 5px;
+  width: 15px;
+  height: 15px;
+}
+
 #hint {
   display: flex;
   margin: auto;
@@ -93,6 +125,11 @@ input {
   justify-content: center;
   padding: 20px;
   text-align: center;
+}
+
+#btnPlayAgain {
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 .popup {
@@ -111,6 +148,10 @@ input {
   transition: opacity 1s;
   padding: 10px;
   text-align: center;
+}
+
+#popup-text {
+  color: #3d6ade;
 }
 
 #closePopup {
